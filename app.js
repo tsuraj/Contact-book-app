@@ -3,7 +3,6 @@ const app = express();
 require('dotenv').config();
 
 
-console.log(process.env);
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
  const contactRoutes = require('./api/routes/contacts');
@@ -20,6 +19,5 @@ mongoose.connect('mongodb+srv://suraj:'+process.env.MONGO_ATLAS_PW +'@cluster0.h
     useNewUrlParser: true
 },()=>console.log("database connected")
 ); 
-console.log(process.env.PORT);
 app.listen(port,()=>console.log(`Listing to the ${port}`))
 
