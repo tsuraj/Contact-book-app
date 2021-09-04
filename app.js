@@ -6,6 +6,8 @@ require('dotenv').config();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
  const contactRoutes = require('./api/routes/contacts');
+ const userRoutes = require('./api/routes/user');
+
 const { urlencoded } = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -13,6 +15,8 @@ app.use(bodyParser.json());
 const port = process.env.PORT || 3000;
 
 app.use('/contact',contactRoutes);
+app.use('/user', userRoutes);
+
 mongoose.connect('mongodb+srv://suraj:'+process.env.MONGO_ATLAS_PW +'@cluster0.hcj2h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
 {
     useUnifiedTopology: true,

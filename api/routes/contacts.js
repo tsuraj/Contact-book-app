@@ -3,9 +3,11 @@ const router = express.Router();
 const mongoose = require('mongoose');
 
 const Contact = require('../models/contact');
+const checkAuth = require('../middleware/check-auth.js');
+
 
 //list down all the contacts
-router.get('/',(req,res,next)=>{
+router.get('/',checkAuth,(req,res,next)=>{
     Contact.find()
         .select("name email _id")
         .exec()
@@ -40,7 +42,7 @@ router.get('/',(req,res,next)=>{
     });
 
 //add contacts
-router.post('/',(req,res,next)=>{
+router.post('/',checkAuth,(req,res,next)=>{
      console.log(req.body);
     const contact = new Contact({
         _id: new mongoose.Types.ObjectId(),
@@ -69,7 +71,7 @@ router.post('/',(req,res,next)=>{
 })
 
 //search contacts
-router.get('/:search_param',(req, res, next) =>{
+router.get('/:search_param',checkAuth,(req, res, next) =>{
    
     
     search_param_ = req.params.search_param;
@@ -117,7 +119,7 @@ router.get('/:search_param',(req, res, next) =>{
 
 //updating the contact
 
-router.patch('/:name',(req, res, next)=>{
+router.patch('/:name',checkAuth,(req, res, next)=>{
     const name_ = req.params.name;
     console.log(name_);
    
