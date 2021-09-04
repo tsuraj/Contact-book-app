@@ -28,8 +28,9 @@
     "express.js": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.5",
-    "nodemon": "^2.0.12",
     "npm": "^7.22.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
 }
